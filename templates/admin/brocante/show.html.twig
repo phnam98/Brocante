@@ -1,0 +1,22 @@
+{% extends 'admin/_base.html.twig' %}
+
+{% block body %}
+    <a class="btn btn-secondary pull-left" href="{{ path('admin-brocantes') }}"><i class="fas fa-arrow-left"></i> Retour</a>
+    <a class="btn btn-primary pull-right" href="{{ path('admin-brocante_editer', {'id' : brocante.idBrocante}) }}"><i
+                class="fas fa-pen"></i> Modifier</a>
+    <br/>
+    <br/>
+
+    <div class="brocante">
+        <h2 class="nom">{{ brocante.nom }}</h2>
+
+        <p class="lieu_date">Brocante ayant lieu à {{ brocante.lieu.villeNomReel }},
+            le {{ brocante.date | date('d/m/Y \à H:i') }}</p>
+
+        <img class="image"
+             src="{% if brocante.image %}{{ brocante.image }}{% else %}{{ asset('build/no_image.png') }}{% endif %}"
+             alt="{{ brocante.nom }}"/>
+
+        <p class="description">{{ brocante.description|nl2br }}</p>
+    </div>
+{% endblock %}

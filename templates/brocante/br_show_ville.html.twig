@@ -1,0 +1,37 @@
+{% extends '_base.html.twig' %}
+
+{% block body %}
+
+    {#TODO : faire template dans tous les show #}
+    <div class="admin-brocantes">
+        {% for brocante in brocantes %}
+            <a href="{{ path('admin-brocantes_consulter', {'id': brocante.idBrocante}) }}">
+                <div class="admin-brocante">
+                    <p class="nom">{{ brocante.nom }}</p>
+
+                    <p class="lieu_date">Brocante ayant lieu à {{ brocante.lieu.villeNomReel }}
+                        le {{ brocante.date | date('d/m/Y \à H:i') }}</p>
+
+                    <p class="description">
+                        {% if brocante.description | length > 200 %}
+                            {{ brocante.description[:200] | nl2br }}...
+                        {% else %}
+                            {{ brocante.description }}
+                        {% endif %}
+                    </p>
+
+                    <img class="image"
+                         src="{% if brocante.image %}{{ brocante.image }}{% else %}{{ asset('build/no_image.png') }}{% endif %}"
+                         alt="{{ brocante.nom }}">
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+    {#    {% if pager.haveToPaginate %}#}
+    {#        <div class="pagerfanta center advancedCenter">#}
+    {#            {{ pagerfanta(pager, 'twitter_bootstrap4', {'routeName': 'admin-brocantes', 'prev_message': '← Précédent', 'next_message': 'Suivant →'}) }}#}
+    {#        </div>#}
+    {#    {% endif %}#}
+
+{% endblock %}

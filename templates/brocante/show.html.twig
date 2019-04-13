@@ -1,0 +1,20 @@
+{% extends '_base.html.twig' %}
+
+{% block body %}
+    <div class="brocante">
+        <h2 class="nom">{{ brocante.nom }}</h2>
+
+        <p class="lieu_date">Brocante ayant lieu à {{ brocante.lieu }},
+            le {{ brocante.date | date('d/m/Y \à H:i') }}</p>
+
+        <img class="image"
+             src="{% if brocante.image %}{{ brocante.image }}{% else %}{{ asset('build/no_image.png') }}{% endif %}"
+             alt="{{ brocante.nom }}"/>
+
+        <p class="description">{{ brocante.description|nl2br }}</p>
+    </div>
+
+    {% if app.user %}
+        {{ form(form) }}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,333 @@
+@import "variables";
+@import "globals";
+@import "structure";
+
+/************** PAGE D'ACCUEIL **************/
+
+.map {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  grid-template-areas: "map__image map__list" "info info";
+
+  @media (max-width: map_get($container-max-widths, lg)) {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: "map__list" "info";
+
+    .map__image {
+      display: none;
+    }
+  }
+
+  .map__image {
+    grid-area: map__image;
+    padding-top : 50px;
+
+    svg {
+      height: 550px;
+
+    }
+
+    path {
+      fill: #575dff;
+      stroke: #FFFFFF;
+      stroke-width: 1px;
+      transition: fill 0.2s;
+      cursor: pointer;
+
+      :hover {
+        fill: #E9780E;
+      }
+    }
+
+    .is-active path {
+      fill: #E9780E;
+    }
+  }
+
+  .map__list {
+    grid-area: map__list;
+    font-size: 13px;
+    padding: 0 0 10px 10px;
+
+    a {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #444;
+      font-size: 13px;
+      text-decoration: none;
+
+      &.is-active,
+      &:hover {
+        color: #e9780e;
+        font-weight: bold;
+      }
+    }
+
+    ul {
+      display: grid;
+      grid-template-columns: auto auto auto;
+
+      @media (max-width: map_get($container-max-widths, xl)) {
+        grid-template-columns: auto auto;
+      }
+
+      @media (max-width: map_get($container-max-widths, lg)) {
+        grid-template-columns: auto auto auto;
+      }
+
+      @media (max-width: map_get($container-max-widths, md)) {
+        grid-template-columns: auto auto;
+      }
+
+      @media (max-width: map_get($container-max-widths, sm)) {
+        grid-template-columns: auto;
+      }
+
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .info {
+    grid-area: info;
+    padding-top: 15px;
+    font-size: 13px;
+    color: #5a6268;
+  }
+
+}
+
+.articles{
+
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-areas: "article1 article2 article3";
+  grid-column-gap : 15px;
+
+  padding-top: 15px;
+  padding-bottom : 100px;
+
+  .article1 {
+    grid-area: article1;
+    img {
+      width : 90%;
+    }
+  }
+  .article2 {
+    grid-area: article2;
+    img {
+      width : 90%;
+    }
+  }
+  .article3{
+    grid-area: article3;
+    img {
+      width : 92%;
+    }
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+  .titre:hover {
+
+    color : #e9780e;
+  }
+
+
+
+  .titre{
+    font-size : 18px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #4e555b;
+  }
+
+  .desc{
+    padding-top : 1px;
+    font-size : 14px;
+    color: #5a6268;
+  }
+
+
+}
+
+
+
+.main_title{
+  text-align: center;
+}
+
+.text{
+
+}
+/************** FIN PAGE D'ACCUEIL **************/
+
+
+/************** PAGE D'INDEX DES BROCANTES **************/
+
+.brocantes {
+  text-align: center;
+
+  .brocante {
+    display: inline-grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas: "image" "nom" "lieu_date" "actions";
+
+    text-align: left;
+
+    margin: 10px;
+    padding: 10px;
+
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+
+    @media (max-width: map_get($container-max-widths, sm)) {
+      margin: 5px 0;
+      width: 100%;
+    }
+
+    .image {
+      grid-area: image;
+
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+
+      height: 150px;
+    }
+
+    .nom {
+      grid-area: nom;
+
+      margin: 0;
+    }
+
+    .lieu_date {
+      grid-area: lieu_date;
+
+      margin: 0 0 5px 0;
+      font-size: 80%;
+    }
+
+    .actions {
+      grid-area: actions;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: "consulter modifier";
+
+      .consulter {
+        grid-area: consulter;
+        margin: 0 5px;
+      }
+
+      .modifier {
+        grid-area: modifier;
+        margin: 0 5px;
+      }
+    }
+  }
+}
+
+/************** FIN PAGE D'INDEX DES BROCANTES **************/
+
+
+/************** PAGE DE CONSULTATION D'UNE BROCANTE **************/
+
+.brocante {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: "nom" "lieu_date" "image" "description";
+
+  .nom {
+    grid-area: nom;
+  }
+
+  .lieu_date {
+    grid-area: lieu_date;
+  }
+
+  .image {
+    grid-area: image;
+
+    height: 300px;
+  }
+
+  .description {
+    grid-area: description;
+
+    text-align: justify
+  }
+}
+
+/************** FIN PAGE DE CONSULTATION D'UNE BROCANTE **************/
+
+/************** FIN APP **************/
+
+
+/************** ADMIN **************/
+
+/************** ADMIN PAGE D'INDEX DES BROCANTES **************/
+
+.admin-brocantes {
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    text-decoration: none;
+  }
+
+  .admin-brocante {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "image nom" "image lieu_date" "image description";
+
+    background-color: lighten(#86accf, 25%);
+    box-shadow: $box-shadow 0 0 5px;
+
+    margin: 30px 0;
+    padding: 10px;
+
+    &:hover {
+      background-color: lighten(#86accf, 22%);
+    }
+
+    .nom {
+      grid-area: nom;
+
+      font-size: 25px;
+    }
+
+    .lieu_date {
+      grid-area: lieu_date;
+    }
+
+    .description {
+      grid-area: description;
+    }
+
+    .image {
+      grid-area: image;
+
+      border-radius: 0.25rem;
+
+      height: 100px;
+      margin-right: 10px;
+    }
+  }
+}
+
+/************** FIN ADMIN PAGE D'INDEX DES BROCANTES **************/
+
+/************** FIN ADMIN **************/

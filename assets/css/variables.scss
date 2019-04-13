@@ -1,0 +1,18 @@
+/********** Colors definition **********/
+
+$light-green: #73ff8d;
+
+$white: #fff;
+$black: #000;
+
+/********** Elements values **********/
+
+$link-color: $black;
+
+// Structure
+$navbar-background: $light-green;
+$footer-background: darken($navbar-background, 5%);
+
+$page-box-background: #eee;
+$gray-light: #777;
+$box-shadow: $gray-light;
